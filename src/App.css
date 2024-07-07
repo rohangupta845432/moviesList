@@ -1,12 +1,13 @@
 .App {
-  text-align: center;
+  /* text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   position: absolute;
-  align-items: center;
+  align-items: center; */
   width: 100%;
+  max-width: 700px;
 }
 
 .App-header {

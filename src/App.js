@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import MovieList from "./components/MoviesList";
+import AddMovies from "./components/AddMovies";
+import Card from "./components/UI/Card";
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    featchMoviesHandler();
+  }, []);
 
   const featchMoviesHandler = async () => {
     setIsLoading(true);
@@ -23,14 +29,23 @@ function App() {
     setIsLoading(false);
   };
 
+  const addMoviesHandler = (movies) => {
+    console.log(movies);
+  };
+
   return (
     <React.Fragment>
       <div className="App">
-        {isLoading && <p>Loading.....</p>}
-        <button className="btn" onClick={featchMoviesHandler}>
-          Featch Movies
-        </button>
-        <MovieList moviesData={movies} />
+        <Card>
+          <AddMovies onAddMoviesHandler={addMoviesHandler} />
+        </Card>
+        <Card>
+          {isLoading && <p>Loading.....</p>}
+          <button className="btn" onClick={featchMoviesHandler}>
+            Featch Movies
+          </button>
+          <MovieList moviesData={movies} />
+        </Card>
       </div>
     </React.Fragment>
   );
