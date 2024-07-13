@@ -7,6 +7,14 @@ const Movie = (props) => {
       <h3>{props.title}</h3>
       <p>{props.openingText}</p>
       <p>{props.releaseDate}</p>
+      <button
+        className="btn"
+        onClick={() => {
+          props.onDelete(props.id);
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 };
